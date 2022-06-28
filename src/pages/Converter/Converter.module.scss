@@ -1,0 +1,39 @@
+.converter {
+	padding-top: 50px;
+
+	&__title {
+		color: rgb(255, 255, 255);
+		text-align: center;
+		font-size: 30px;
+		margin-bottom: 50px;
+	}
+
+	&__wrapper {
+		background-color: #e9e9e9;
+		max-width: 350px;
+		margin: 0 auto;
+		border-radius: 20px;
+		box-shadow: 0 0 30px 5px rgba(251 232 1 / 35%);
+		padding: 30px;
+		animation: puls 5s infinite;
+	}
+}
+.groupp__wrapper {
+	display: flex;
+	justify-content: center;
+	column-gap: 20px;
+	&:first-child {
+		margin-bottom: 20px;
+	}
+}
+@keyframes puls {
+	0% {
+		box-shadow: 0 0 30px 5px rgb(251 232 1 / 35%);
+	}
+	50% {
+		box-shadow: 0 0 35px 10px rgb(251 232 1 / 55%);
+	}
+	100% {
+		box-shadow: 0 0 30px 5px rgb(251 232 1 / 35%);
+	}
+}

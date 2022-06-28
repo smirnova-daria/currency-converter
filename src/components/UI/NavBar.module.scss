@@ -1,0 +1,22 @@
+.nav {
+	height: 50px;
+	background-color: #f7797d;
+	display: flex;
+	align-items: center;
+}
+
+.nav__link {
+	display: inline-block;
+	padding: 0 15px;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: all 0.5s;
+	&:not(:last-child) {
+		border-right: 2px solid #bbb;
+	}
+	&:hover {
+		color: #aa3a3e;
+	}
+}
