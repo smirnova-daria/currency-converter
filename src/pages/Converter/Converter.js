@@ -11,13 +11,13 @@ export const Converter = () => {
     const [rates, setRates] = useState([])
 
     useEffect(() => {
-        // fetch(
-        //     `https://api.apilayer.com/exchangerates_data/latest?apikey=${process.env.REACT_APP_API_KEY}`
-        // )
-        //     .then((response) => response.json())
-        //     .then((data) => setRates(data.rates))
-        //     .catch((error) => console.log('error', error))
-        setRates(db.rates)
+        fetch(
+            `https://api.apilayer.com/exchangerates_data/latest?apikey=${process.env.REACT_APP_API_KEY}`
+        )
+            .then((response) => response.json())
+            .then((data) => setRates(data.rates))
+            .catch((error) => console.log('error', error))
+        //setRates(db.rates)
         //временное решение - положить котировки в локальный файл(чтобы не использовать запросы к api)
     }, [])
     useEffect(() => {

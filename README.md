@@ -1,4 +1,9 @@
-# Getting Started with Create React App
+# Приложение для конвертации валют
+Доступно по адресу
+
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
