@@ -34,7 +34,7 @@ export const Converter = () => {
         const long = position.coords.longitude
 
         fetch(
-            `https://api.positionstack.com/v1/reverse?access_key=${process.env.REACT_APP_GEO_API_KEY}&query=${lat},${long}&country_module=1`
+            `http://api.positionstack.com/v1/reverse?access_key=${process.env.REACT_APP_GEO_API_KEY}&query=${lat},${long}&country_module=1`
         )
             .then((res) => res.json())
             .then((data) => data.data[0].country_module.currencies[0].code)
