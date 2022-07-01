@@ -1,6 +1,4 @@
 # Приложение для конвертации валют
-## [Ссылка на сайт](https://currency-converter-sd.herokuapp.com/)
-
 
 
 ## Getting Started with Create React App
