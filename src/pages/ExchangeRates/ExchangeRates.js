@@ -17,7 +17,7 @@ export const ExchangeRates = () => {
             .then((data) => setRates(data.rates))
             .catch((error) => console.log('error', error))
 
-        // setRates(db.rates)
+        //setRates(db.rates)
         //временное решение - положить котировки в локальный файл(чтобы не использовать запросы к api)
     }, [])
     useEffect(() => {

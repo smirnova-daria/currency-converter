@@ -4,10 +4,10 @@ import { Select } from '../../components/UI/Select'
 import { useEffect, useState } from 'react'
 import { db } from '../../assets/db/db'
 export const Converter = () => {
-    const [amount1, setAmount1] = useState(1)
-    const [amount2, setAmount2] = useState(1)
-    const [currency1, setCurrency1] = useState('USD')
-    const [currency2, setCurrency2] = useState('RUB')
+    const [amount1, setAmount1] = useState(0)
+    const [amount2, setAmount2] = useState(0)
+    const [currency1, setCurrency1] = useState('')
+    const [currency2, setCurrency2] = useState('')
     const [rates, setRates] = useState([])
 
     useEffect(() => {
@@ -17,17 +17,41 @@ export const Converter = () => {
             .then((response) => response.json())
             .then((data) => setRates(data.rates))
             .catch((error) => console.log('error', error))
+
+        navigator.geolocation.getCurrentPosition(geo_success, geo_error)
+
         //setRates(db.rates)
         //временное решение - положить котировки в локальный файл(чтобы не использовать запросы к api)
     }, [])
     useEffect(() => {
         if (!!rates) {
-            function init() {
-                handleAmount1Change(1)
-            }
-            init()
+            handleAmount1Change(0)
         }
     }, [rates])
+
+    function geo_success(position) {
+        const lat = position.coords.latitude
+        const long = position.coords.longitude
+
+        fetch(
+            `http://api.positionstack.com/v1/reverse?access_key=${process.env.REACT_APP_GEO_API_KEY}&query=${lat},${long}&country_module=1`
+        )
+            .then((res) => res.json())
+            .then((data) => data.data[0].country_module.currencies[0].code)
+            .then((curr) => {
+                const curr2 = curr === 'USD' ? 'EUR' : 'USD'
+                setCurrency1(curr)
+                setCurrency2(curr2)
+                handleAmount1Change(0)
+            })
+    }
+
+    function geo_error() {
+        console.log('geo error')
+        setCurrency1('USD')
+        setCurrency2('EUR')
+        handleAmount1Change(0)
+    }
 
     const formatNumber = (number) => {
         return number.toFixed(4)
